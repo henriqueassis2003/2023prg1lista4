@@ -1,0 +1,11 @@
+a)  para resolver o problema na linha 18 trocamos o "[1.0,0.5]" por "v =Vector([1.0, 0.5])" (sem as aspas, com isso
+o codigo deve funcionar
+
+b) a saida deve ser:
+
+[[0.0, 0.0], [2.0, 1.0], [3.5, 1.75]]
+
+[Program finished]
+
+c) O(m*n) 
+
