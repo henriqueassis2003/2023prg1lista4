@@ -1,11 +1,9 @@
 def search_rotated(nums, target):
-    """
-    Retorna o índice do elemento alvo em uma lista ordenada rotacionada, ou -1 se o elemento não estiver presente.
-    """
+   
     n = len(nums)
     if n == 0:
         return -1
-    # Encontra o índice do pivô usando busca binária modificada
+
     left, right = 0, n-1
     while left < right:
         mid = (left + right) // 2
@@ -14,7 +12,6 @@ def search_rotated(nums, target):
         else:
             right = mid
     pivot = left
-    # Realiza busca binária normal na parte relevante da lista
     left, right = 0, n-1
     while left <= right:
         mid = (left + right) // 2
