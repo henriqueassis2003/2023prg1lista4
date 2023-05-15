@@ -1,4 +1,4 @@
-def first_step(poly_str):
+def polyToDict(poly_str):
     # Inicializa o dicionário vazio
     poly_dict = {}
     # Separa a string pelos sinais de adição
