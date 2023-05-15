@@ -1,18 +1,27 @@
-def string_to_polynomial(string):
-    polynomial = {}
-    terms = string.split("+")  # split the string into terms separated by "+"
-    for term in terms:
-        if "-" in term:  # if the term contains a "-", split it into coefficient and variable parts
-            coefficient, variable = term.split("-")
-            coefficient = int(coefficient)  # convert coefficient to integer
-            coefficient *= -1  # negate the coefficient
-            variable = "-" + variable  # add the "-" back to the variable part
-        else:  # if the term does not contain a "-", split it into coefficient and variable parts
-            coefficient, variable = term.split("x")
-            coefficient = int(coefficient)  # convert coefficient to integer
-        if variable == "":  # if the term is a constant, set the degree to 0
-            degree = 0
+def first_step(poly_str):
+    # Inicializa o dicionário vazio
+    poly_dict = {}
+    # Separa a string pelos sinais de adição
+    monomials = poly_str.split("+")
+    for monomial in monomials:
+        # Separa o coeficiente e o grau do monômio
+        parts = monomial.strip().split("x^")
+        if len(parts) == 1:
+            # Se não houver um grau especificado, assume que é 1
+            coef_str = parts[0].strip()
+            try:
+                coef = float(coef_str)
+            except ValueError:
+                continue
+            exp = 1
         else:
-            degree = int(variable[2:])  # extract the degree from the variable part
-        polynomial[degree] = coefficient
-    return polynomial
+            # Converte o coeficiente e o grau em floats
+            coef_str, exp_str = map(str.strip, parts)
+            try:
+                coef = float(coef_str)
+                exp = float(exp_str)
+            except ValueError:
+                continue
+        # Adiciona o monômio ao dicionário
+        poly_dict[int(exp)] = coef
+    return poly_dict
